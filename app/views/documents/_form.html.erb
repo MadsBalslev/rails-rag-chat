@@ -1,24 +1,16 @@
 <div id="upload-document-form">
-
   <form class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-    <div>
-      <label for="document" class="block text-xs font-medium text-gray-700">
-        Document
-      </label>
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text">Document</span>
+      </div>
       <input
-        class="
-          flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm
-          shadow-sm transition-colors file:border-0 file:bg-transparent
-          file:text-foreground file:text-sm file:font-medium
-          placeholder:text-muted-foreground focus-visible:outline-none
-          focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed
-          disabled:opacity-50
-        "
         id="document"
+        class="file-input w-full max-w-xs"
         name="document"
         type="file"
       >
-    </div>
+    </label>
     <input type="submit" value="Upload" class="btn btn-block btn-primary">
   </form>
 </div>
