@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_28_094928) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_01_190704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "vector"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +41,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_28_094928) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "chunks", force: :cascade do |t|
+    t.string "chunkable_type", null: false
+    t.bigint "chunkable_id", null: false
+    t.text "chunk", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.vector "embedding", limit: 1536
+    t.index ["chunkable_type", "chunkable_id"], name: "index_chunks_on_chunkable"
   end
 
   create_table "documents", force: :cascade do |t|
