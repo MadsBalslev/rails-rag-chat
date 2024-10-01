@@ -1,6 +1,33 @@
 <div class="flex flex-row justify-between items-center w-full">
   <h2 class="text-2xl font-bold">Documents</h2>
-  <a href="#" class="btn btn-primary">Upload</a>
+  <%= link_to new_document_path, class: "btn btn-primary" do %>
+    <%= lucide_icon('file-plus-2') %>
+    Upload Document
+  <% end %>
 </div>
 
-<%= render "form" %>
+<section class="my-8">
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Upload Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+        <tr>
+          <td><%= document.id %></td>
+          <td><%= document.name %></td>
+          <td><%= document.file.content_type %></td>
+          <td><%= number_to_human_size(document.file.byte_size) %></td>
+          <td><%= document.created_at.strftime("%b %d, %Y") %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</section>

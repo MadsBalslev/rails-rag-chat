@@ -1,16 +1,27 @@
-<div id="upload-document-form">
-  <form class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-    <label class="form-control w-full max-w-xs">
+<% field_classes = "file-input file-input-bordered w-full max-w-xs" %>
+<% label_classes = "label-text" %>
+<% if document.errors.any? %>
+  <% field_classes = "#{field_classes} file-input-error" %>
+  <% label_classes = "#{label_classes} text-error" %>
+<% end %>
+
+<%= form_with model: document, class: "mx-auto mb-0 mt-8 max-w-md space-y-4" do |form| %>
+  <%= form.hidden_field :title %>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="<%= label_classes %>">Add Document</span>
+    </div>
+    <%= form.file_field :file, class: field_classes %>
+    <% if document.errors.any? %>
       <div class="label">
-        <span class="label-text">Document</span>
+        <span class="label-text-alt text-error">
+          <%= document.errors.full_messages_for(:file).join(", ") %>
+        </span>
       </div>
-      <input
-        id="document"
-        class="file-input w-full max-w-xs"
-        name="document"
-        type="file"
-      >
-    </label>
-    <input type="submit" value="Upload" class="btn btn-block btn-primary">
-  </form>
-</div>
+    <% end %>
+  </label>
+  <%= form.button nil, class: "btn btn-block btn-primary" do %>
+    <%= lucide_icon("upload") %>
+    Upload Document
+  <% end %>
+<% end %>
