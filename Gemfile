@@ -66,3 +66,5 @@ end
 
 gem "tailwindcss-rails", "~> 2.7"
 gem "lucide-rails", "~> 0.5.1"
+
+gem "view_component", "~> 3.15"

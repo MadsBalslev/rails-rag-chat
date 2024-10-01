@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "modal" do %>
+  <dialog id="new-document-modal" class="modal modal-open">
+    <div
+      class="modal-box"
+      data-controller="turbo-modal"
+      data-turbo-modal-target="modal"
+      data-action="
+        turbo:submit-end->turbo-modal#submitEnd
+        click@window->turbo-modal#closeBackground
+      "
+    >
+      <div class="header">
+        <h2 class="text-2xl font-bold"><%= @title %></h2>
+        <button class="btn" data-action="turbo-modal#closeModal">✕</button>
+      </div>
+      <%= content %>
+    </div>
+  </dialog>
+<% end %>

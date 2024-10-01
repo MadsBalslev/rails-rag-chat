@@ -1,15 +1,10 @@
-<%= turbo_frame_tag "modal" do %>
-  <dialog
-    id="new-document-modal"
-    class="modal modal-open"
-    data-controller="turbo-modal"
-  >
-    <div class="modal-box">
-      <div class="header">
-        <h2 class="text-2xl font-bold">Upload Document</h2>
-        <button class="btn" data-action="turbo-modal#closeModal">✕</button>
-      </div>
-      <%= render "form", document: @document %>
-    </div>
-  </dialog>
+<% if turbo_frame_request? %>
+  <%= render TurboModalComponent.new(title: "New Document") do %>
+    <%= render "form", document: @document %>
+  <% end %>
+<% else %>
+  <div class="header">
+    <h2 class="text-2xl font-bold">New Document</h2>
+  </div>
+  <%= render "form", document: @document %>
 <% end %>

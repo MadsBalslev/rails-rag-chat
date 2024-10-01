@@ -15,19 +15,12 @@
           <th>Name</th>
           <th>Type</th>
           <th>Size</th>
+          <th>Owner</th>
           <th>Upload Date</th>
         </tr>
       </thead>
-      <tbody>
-        <% @documents.each do |document| %>
-        <tr>
-          <td><%= document.id %></td>
-          <td><%= document.name %></td>
-          <td><%= document.file.content_type %></td>
-          <td><%= number_to_human_size(document.file.byte_size) %></td>
-          <td><%= document.created_at.strftime("%b %d, %Y") %></td>
-        </tr>
-        <% end %>
+      <tbody id="documents">
+        <%= render @documents %>
     </table>
   </div>
 </section>

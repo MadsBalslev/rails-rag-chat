@@ -14,7 +14,18 @@ class DocumentsController < ApplicationController
     @document.user = User.first
 
     if @document.save
-      redirect_to documents_path, notice: "The document has been uploaded."
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "documents",
+            partial: "documents/document",
+            collection: Document.all
+          )
+        end
+        format.html do
+          redirect_to documents_path, notice: "The document has been uploaded."
+        end
+      end
     else
       render :new, status: :unprocessable_entity
     end
