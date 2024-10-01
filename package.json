@@ -1,6 +1,7 @@
 {
   "name": "app",
   "private": true,
+  "main": "app/javascript/application.js",
   "scripts": {
     "build": "bun bun.config.js"
   },
@@ -12,3 +13,4 @@
     "daisyui": "^4.12.10"
   }
 }
+
