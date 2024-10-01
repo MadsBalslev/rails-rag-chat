@@ -1,7 +1,7 @@
 class Chunk < ApplicationRecord
   belongs_to :chunkable, polymorphic: true
 
-  after_save :create_embedding
+  after_create :create_embedding
 
   private
 

@@ -49,6 +49,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -74,3 +76,5 @@ gem "neighbor", "~> 0.4.3"
 gem "sidekiq", "~> 7.3"
 
 gem "pdf-reader", "~> 2.12"
+
+gem "ruby-openai", "~> 7.1"
