@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
   def index
-    @collections = Collection.all
+    @collections = policy_scope(Collection)
+    authorize @collections
   end
 
   def show

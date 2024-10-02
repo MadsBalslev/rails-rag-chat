@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.10"
+    "@hotwired/turbo-rails": "^8.0.10",
+    "@stimulus-components/notification": "^3.0.0"
   },
   "devDependencies": {
     "daisyui": "^4.12.10"
   }
 }
-
