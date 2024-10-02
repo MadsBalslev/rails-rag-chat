@@ -11,6 +11,7 @@ class CollectionsController < ApplicationController
 
   def new
     @collection = Collection.build
+    authorize @collection
   end
 
   def create

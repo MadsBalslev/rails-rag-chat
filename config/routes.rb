@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   root "chat#index"
   #
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create show]
   resources :chat, only: %i[index create]
   resources :documents, only: %i[index new create]
   resources :collections

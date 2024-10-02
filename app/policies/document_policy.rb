@@ -1,4 +1,4 @@
-class CollectionPolicy < ApplicationPolicy
+class DocumentPolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -6,35 +6,13 @@ class CollectionPolicy < ApplicationPolicy
   # https://gist.github.com/Burgestrand/4b4bc22f31c8a95c425fc0e30d7ef1f5
 
   class Scope < ApplicationPolicy::Scope
+    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      scope.where(collection: user.collections)
     end
   end
+
   def index?
     true
-  end
-
-  def show?
-    true
-  end
-
-  def create?
-    user.present?
-  end
-
-  def new?
-    create?
-  end
-
-  def update?
-    user.present? && record.user == user
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-    user.present? && record.user == user
   end
 end

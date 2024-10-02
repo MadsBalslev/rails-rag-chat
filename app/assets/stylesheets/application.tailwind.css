@@ -6,4 +6,12 @@
   .header {
     @apply flex flex-row justify-between items-center w-full;
   }
+
+  .alert {
+    @apply flex items-center w-full py-5 px-6 text-gray-600 bg-white rounded-xl border border-gray-200 shadow-sm mb-4;
+  }
+
+  .alert-error {
+    @apply text-red-600 bg-red-100 border-red-200;
+  }
 }

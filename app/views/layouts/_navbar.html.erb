@@ -1,17 +1,30 @@
 <div class="navbar bg-base-100">
-  <div class="flex-1">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <%= lucide_icon("menu") %>
+      </div>
+      <ul
+        tabindex="0"
+        class="
+          menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow
+        "
+      >
+        <li><a>Item 1</a></li>
+        <li><a>Parent</a></li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </div>
     <a class="btn btn-ghost text-xl">Rails Rag</a>
   </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <% if authenticated? %>
-        <li><%= link_to "Chat", chat_index_path, class: is_active?("chat") %></li>
-        <li><%= link_to "Documents", documents_path, class: is_active?("documents") %></li>
-        <li><%= link_to "Collections", collections_path, class: is_active?("collections") %></li>
-        <li><%= button_to "Sign out", session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Sign in", new_session_path, class: is_active?("sessions") %></li>
-      <% end %>
-    </ul>
+  <div class="navbar-center hidden lg:flex">
+    <% if authenticated? %>
+      <%= render "layouts/navigation/menu" %>
+    <% end %>
+  </div>
+  <div class="navbar-end">
+    <% if authenticated? %>
+      <%= render "layouts/navigation/dropdown" %>
+    <% end %>
   </div>
 </div>

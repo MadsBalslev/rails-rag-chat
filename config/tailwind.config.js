@@ -8,6 +8,11 @@ module.exports = {
     "./app/views/**/*.{erb,haml,html,slim}",
     "./app/components/**/*.{erb,haml,html,slim}",
   ],
+  safelist: [
+    {
+      pattern: /alert-+/, // 👈  This includes bg of all colors and shades
+    },
+  ],
   theme: {
     extend: {
       fontFamily: {
