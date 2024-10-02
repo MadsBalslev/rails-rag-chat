@@ -3,6 +3,11 @@ class CollectionsController < ApplicationController
     @collections = Collection.all
   end
 
+  def show
+    @collection = Collection.find(params[:id])
+    @documents = @collection.documents
+  end
+
   def new
     @collection = Collection.build
   end

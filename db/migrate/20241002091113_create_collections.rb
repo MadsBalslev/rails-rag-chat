@@ -7,6 +7,6 @@ class CreateCollections < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_reference :documents, :collection, foreign_key: true
+    add_reference :documents, :collection, foreign_key: true, null: false
   end
 end

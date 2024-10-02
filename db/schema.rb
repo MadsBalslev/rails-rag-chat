@@ -66,7 +66,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_091113) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "collection_id"
+    t.bigint "collection_id", null: false
     t.index ["collection_id"], name: "index_documents_on_collection_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end

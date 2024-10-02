@@ -21,8 +21,5 @@ Rails.application.routes.draw do
   # Chat routes
   resources :chat, only: %i[index create]
   resources :documents, only: %i[index new create]
-  resources :collections do
-    # Nested documents under collections
-    resources :documents, only: %i[index]
-  end
+  resources :collections
 end

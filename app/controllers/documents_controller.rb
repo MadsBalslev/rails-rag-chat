@@ -5,6 +5,10 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.build
+    if params[:collection_id]
+      @collection = Collection.find(params[:collection_id])
+      @document.collection = @collection
+    end
   end
 
   def create
