@@ -23,6 +23,12 @@ class Document < ApplicationRecord
     end
   end
 
+  def embedded?
+    return false unless self.chunks.exists?
+
+    self.chunks.all? { |chunk| chunk.embedding.present? }
+  end
+
   private
 
   def set_document_title

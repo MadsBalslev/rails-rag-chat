@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   root "documents#index"
   #
   resources :documents
+
+  # Chat routes
+  resources :chat, only: %i[index create]
 end

@@ -5,4 +5,7 @@
   <td><%= number_to_human_size(document.file.byte_size) %></td>
   <td><%= document.user.full_name %></td>
   <td><%= document.created_at.strftime("%b %d, %Y") %></td>
+  <td
+    class="<%= document.embedded? ? 'text-green-600' : 'text-red-600' %> flex justify-center"
+  ><%= document.embedded? ? lucide_icon("badge-check") : lucide_icon("x") %></td>
 </tr>
