@@ -1,0 +1,11 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">Rails Rag</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><%= link_to "Chat", chat_index_path, class: is_active?("chat") %></li>
+      <li><%= link_to "Documents", documents_path, class: is_active?("documents") %></li>
+    </ul>
+  </div>
+</div>
