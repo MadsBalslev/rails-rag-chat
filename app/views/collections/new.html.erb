@@ -1,0 +1,10 @@
+<% if turbo_frame_request? %>
+  <%= render TurboModalComponent.new(title: "New Collection") do %>
+    <%= render "form", collection: @collection %>
+  <% end %>
+<% else %>
+  <div class="header">
+    <h2 class="text-2xl font-bold">New Collection</h2>
+  </div>
+  <%= render "form", collection: @collection %>
+<% end %>

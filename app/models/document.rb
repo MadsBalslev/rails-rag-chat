@@ -2,6 +2,7 @@ class Document < ApplicationRecord
   include Chunkable
 
   belongs_to :user
+  belongs_to :collection
 
   before_save :set_document_title
 

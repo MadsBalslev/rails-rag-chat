@@ -14,10 +14,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "documents#index"
+  root "chat#index"
   #
-  resources :documents
+
 
   # Chat routes
   resources :chat, only: %i[index create]
+  resources :documents, only: %i[index new create]
+  resources :collections do
+    # Nested documents under collections
+    resources :documents, only: %i[index]
+  end
 end

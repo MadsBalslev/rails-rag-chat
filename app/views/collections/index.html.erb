@@ -1,0 +1,13 @@
+<div class="flex flex-row justify-between items-center w-full">
+  <h2 class="text-2xl font-bold">Collections</h2>
+  <%= link_to new_collection_path, class: "btn btn-primary", data: {turbo_frame: "modal"} do %>
+    <%= lucide_icon("plus") %>
+    New Collection
+  <% end %>
+</div>
+
+<section class="my-8">
+  <div class="overflow-x-auto">
+    <%= render "table", collections: @collections %>
+  </div>
+</section>

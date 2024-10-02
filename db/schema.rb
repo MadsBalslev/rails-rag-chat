@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_01_190704) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_02_091113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -54,11 +54,20 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_01_190704) do
     t.index ["chunkable_type", "chunkable_id"], name: "index_chunks_on_chunkable"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "collection_id"
+    t.index ["collection_id"], name: "index_documents_on_collection_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
@@ -71,4 +80,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_01_190704) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "documents", "collections"
 end

@@ -1,0 +1,23 @@
+<%= form_with model: collection, class: "mx-auto mb-0 mt-8 max-w-md space-y-4" do |form| %>
+  <label class="form-control w-full">
+    <div class="label">
+      <span class="label-text">Collection Name</span>
+    </div>
+    <%= form.text_field :title,
+                    class: "input input-bordered w-full",
+                    placeholder: "Collection Name" %>
+  </label>
+
+  <label class="form-control w-full">
+    <div class="label">
+      <span class="label-text">Collection Description</span>
+    </div>
+    <%= form.textarea :description,
+                  class: "textarea textarea-bordered w-full",
+                  placeholder: "Description" %>
+  </label>
+  <%= form.button nil, class: "btn btn-block btn-primary" do %>
+    <%= lucide_icon("plus") %>
+    Create Collection
+  <% end %>
+<% end %>
