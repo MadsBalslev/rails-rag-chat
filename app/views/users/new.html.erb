@@ -1,0 +1,91 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Sign up</h1>
+
+  <%= form_with model: @user, class: "mx-auto mb-0 mt-8" do |form| %>
+    <div id="name" class="flex flex-row gap-4">
+      <label class="form-control w-full grow">
+        <div class="label">
+          <span class="label-text">First name</span>
+        </div>
+        <%= form.text_field :first_name,
+                        class:
+                          "input input-bordered w-full #{@user.errors[:first_name].any? ? "input-error" : ""}",
+                        placeholder: "John" %>
+        <div class="label">
+          <% if @user.errors[:first_name].any? %>
+            <span class="label-text-alt text-error"><%= @user.errors.full_messages_for(:first_name).first %></span>
+          <% end %>
+        </div>
+      </label>
+
+      <label class="form-control w-full grow">
+        <div class="label">
+          <span class="label-text">Last name</span>
+        </div>
+        <%= form.text_field :last_name,
+                        class:
+                          "input input-bordered w-full #{@user.errors[:last_name].any? ? "input-error" : ""}",
+                        placeholder: "Doe" %>
+        <div class="label">
+          <% if @user.errors[:last_name].any? %>
+            <span class="label-text-alt text-error"><%= @user.errors.full_messages_for(:last_name).first %></span>
+          <% end %>
+        </div>
+      </label>
+    </div>
+
+    <label class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Email</span>
+      </div>
+      <%= form.email_field :email_address,
+                       class:
+                         "input input-bordered w-full #{@user.errors[:email_address].any? ? "input-error" : ""}",
+                       placeholder: "john@doe.come" %>
+      <div class="label">
+        <% if @user.errors[:email_address].any? %>
+          <span class="label-text-alt text-error"><%= @user.errors.full_messages_for(:email_address).first %></span>
+        <% end %>
+      </div>
+    </label>
+
+    <label class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Password</span>
+      </div>
+      <%= form.password_field :password,
+                          maxlength: 72,
+                          class:
+                            "input input-bordered w-full #{@user.errors[:password].any? ? "input-error" : ""}" %>
+      <div class="label">
+        <% if @user.errors[:password].any? %>
+          <span class="label-text-alt text-error"><%= @user.errors.full_messages_for(:password).first %></span>
+        <% end %>
+      </div>
+    </label>
+
+    <label class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Confirm password</span>
+      </div>
+      <%= form.password_field :password_confirmation,
+                          maxlength: 72,
+                          class:
+                            "input input-bordered w-full #{@user.errors[:password].any? ? "input-error" : ""}" %>
+      <div class="label">
+        <% if @user.errors[:password].any? %>
+          <span class="label-text-alt text-error"><%= @user.errors.full_messages_for(:password).first %></span>
+        <% end %>
+      </div>
+
+    </label>
+
+    <div class="flex flex-row justify-between items-center">
+      <div id="signin" class="flex flex-row items-center gap-4">
+        <%= form.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+      <span class="text-gray-700">Already have an account? sign in
+        <%= link_to "here", new_session_path, class: "underline" %></span>
+    </div>
+  <% end %>
+</div>
