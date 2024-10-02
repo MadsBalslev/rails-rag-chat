@@ -14,6 +14,7 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.build(collection_params)
+    @collection.user = Current.user
 
     if @collection.save
       respond_to do |format|

@@ -3,4 +3,5 @@
   <td class="cursor-pointer hover:underline"><%= link_to collection.title, collection %></td>
   <td><%= collection.documents.count %></td>
   <td><%= collection.created_at.strftime("%b %d, %Y") %></td>
+  <td><%= collection.user.full_name %></td>
 </tr>

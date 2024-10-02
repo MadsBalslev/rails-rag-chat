@@ -14,6 +14,7 @@
                 Collection.all.map { |c| [c.title, c.id] },
                 { include_blank: "Select Collection" },
                 class: "select select-bordered w-full",
+                selected: @collection.present? ? @collection.id : nil,
                 disabled: @collection.present? %>
   </label>
   <label class="form-control w-full">

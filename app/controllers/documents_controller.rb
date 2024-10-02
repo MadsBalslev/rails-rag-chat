@@ -12,10 +12,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.build
-
+    @document = Document.build(document_params)
     @document.file.attach(document_params[:file])
-    @document.user = User.first
 
     if @document.save
       respond_to do |format|
@@ -37,6 +35,6 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:file, :name)
+    params.require(:document).permit(:file, :collection_id)
   end
 end
