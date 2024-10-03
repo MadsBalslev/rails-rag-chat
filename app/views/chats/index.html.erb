@@ -1,0 +1,17 @@
+<% content_for :side_menu do %>
+  <%= render "sidemenu", chats: @chats %>
+<% end %>
+
+<div class="chat-window flex flex-col h-full w-full">
+  <div class="grow w-full px-8">
+    <% if @messages %>
+      <% @messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="flex flex-row p-3">
+    <%= render "form",
+    { message: @message, chat: (@current_chat.present? ? @current_chat : nil) } %>
+  </div>
+</div>

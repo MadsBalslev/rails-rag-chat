@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  get "message/create"
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,11 +17,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "chat#index"
+  root "chats#index"
   #
 
   resources :users, only: %i[new create show update]
-  resources :chat, only: %i[index create]
+  resources :chats, only: %i[index create show]
   resources :documents, only: %i[index new create]
   resources :collections
+  resources :messages, only: %i[create]
 end

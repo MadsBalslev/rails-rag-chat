@@ -1,6 +1,6 @@
 <div class="grow items-center justify-start flex">
   <div class="avatar placeholder">
-    <div id="avatar" class="bg-neutral text-neutral-content w-48 rounded-full">
+    <div id="avatar" class="bg-neutral text-neutral-content max-w-48 rounded-full">
       <% if user.avatar.attached? %>
         <img alt="<%= user.full_name %>" src="<%= url_for(user.avatar) %>"/>
       <% else %>

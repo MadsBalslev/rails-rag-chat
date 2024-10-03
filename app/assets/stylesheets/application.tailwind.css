@@ -4,7 +4,7 @@
 
 @layer components {
   .header {
-    @apply flex flex-row justify-between items-center w-full mb-8;
+    @apply flex flex-row justify-between items-center w-full;
   }
 
   .alert {

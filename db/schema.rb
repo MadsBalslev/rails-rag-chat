@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_02_113615) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_03_113418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -43,6 +43,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_113615) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
   create_table "chunks", force: :cascade do |t|
     t.string "chunkable_type", null: false
     t.bigint "chunkable_id", null: false
@@ -71,6 +79,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_113615) do
     t.index ["collection_id"], name: "index_documents_on_collection_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.bigint "user_id"
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "ip_address"
@@ -92,7 +110,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_113615) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "users"
   add_foreign_key "collections", "users"
   add_foreign_key "documents", "collections"
+  add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "users"
   add_foreign_key "sessions", "users"
 end

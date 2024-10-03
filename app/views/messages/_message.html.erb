@@ -1,0 +1,12 @@
+<div class="chat chat-<%= message.user.present? ? "end" : "start" %>">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <%= render "users/avatar", { user: message.user, initials: message.user.initials } %>
+    </div>
+  </div>
+  <div class="chat-header">
+    <%= message.user.present? ? message.user.first_name : "System" %>
+  </div>
+  <div class="chat-bubble"><%= message.content %></div>
+  <time class="text-xs opacity-50"><%= message.created_at %></time>
+</div>
