@@ -10,7 +10,10 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /alert-+/, // 👈  This includes bg of all colors and shades
+      pattern: /alert-+/,
+    },
+    {
+      pattern: /chat-+/,
     },
   ],
   theme: {
