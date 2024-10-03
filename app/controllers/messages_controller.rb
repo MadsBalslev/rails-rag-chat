@@ -20,7 +20,9 @@ class MessagesController < ApplicationController
   private
 
   def find_chat
-    @chat = Chat.find(message_params[:chat_id]) if message_params[:chat_id]
+    if message_params[:chat_id]
+      @chat = Chat.find(message_params[:chat_id]) rescue nil
+    end
   end
   def message_params
     params.require(:message).permit(:content, :chat_id)
