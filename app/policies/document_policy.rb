@@ -15,4 +15,8 @@ class DocumentPolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def show?
+    user.collections.include?(record.collection)
+  end
 end

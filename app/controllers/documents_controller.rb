@@ -4,6 +4,13 @@ class DocumentsController < ApplicationController
     authorize @documents
   end
 
+  def show
+    @document = Document.find(params[:id])
+    authorize @document
+
+    redirect_to rails_blob_path(@document.file), disposition: "preview"
+  end
+
   def new
     @document = Document.build
     if params[:collection_id]

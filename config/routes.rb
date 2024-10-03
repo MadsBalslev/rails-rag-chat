@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create show update]
   resources :chats, only: %i[index create show]
-  resources :documents, only: %i[index new create]
+  resources :documents, only: %i[index new create show]
   resources :collections
   resources :messages, only: %i[create]
 end

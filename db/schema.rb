@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_03_145253) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_03_172358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -88,6 +88,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_03_145253) do
     t.index ["collection_id"], name: "index_documents_on_collection_id"
   end
 
+  create_table "message_chunks", force: :cascade do |t|
+    t.bigint "message_id", null: false
+    t.bigint "chunk_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chunk_id"], name: "index_message_chunks_on_chunk_id"
+    t.index ["message_id"], name: "index_message_chunks_on_message_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "chat_id", null: false
     t.bigint "user_id"
@@ -124,6 +133,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_03_145253) do
   add_foreign_key "chats", "users"
   add_foreign_key "collections", "users"
   add_foreign_key "documents", "collections"
+  add_foreign_key "message_chunks", "chunks"
+  add_foreign_key "message_chunks", "messages"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "sessions", "users"
