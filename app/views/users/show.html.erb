@@ -1,1 +1,8 @@
-<h2><%= @user.full_name %></h2>
+<div class="header justify-center">
+  <h1 class="text-3xl font-bold"><%= @valid_user.full_name %></h1>
+</div>
+
+<section class="flex flex-col justify-center items-center">
+  <%= render "avatar", { user: @user, initials: @valid_user.initials } %>
+  <%= render "form", user: @user %>
+</section>

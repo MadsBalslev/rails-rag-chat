@@ -1,10 +1,18 @@
 <div class="dropdown dropdown-end">
-  <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-    <div class="w-10 rounded-full">
-      <img
-        alt="MB"
-        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-      />
+  <div
+    tabindex="0"
+    role="button"
+    class="btn btn-ghost btn-circle avatar placeholder"
+  >
+    <div class="w-12 rounded-full bg-neutral text-neutral-content">
+      <% if current_user.avatar.attached? %>
+        <img
+          alt="<%= current_user.full_name %>"
+          src="<%= url_for(current_user.avatar) %>"
+        />
+      <% else %>
+        <span class="text-xl"><%= current_user.initials %></span>
+      <% end %>
     </div>
   </div>
   <ul
@@ -13,7 +21,17 @@
       menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow
     "
   >
-    <li><%= link_to "Profile", user_path(current_user) %></li>
-    <li><%= button_to "Sign out", session_path, method: :delete %></li>
+    <li>
+      <%= link_to user_path(current_user), class: "flex items-center gap-4" do %>
+        <%= lucide_icon("user") %>
+        Profile
+      <% end %>
+    </li>
+    <li>
+      <%= button_to session_path, class: "flex items-center gap-4", method: :delete do %>
+        <%= lucide_icon("log-out") %>
+        Sign out
+      <% end %>
+    </li>
   </ul>
 </div>

@@ -4,7 +4,10 @@
 
 import { application } from "./application";
 import Notification from "@stimulus-components/notification";
+import AutoSubmit from "@stimulus-components/auto-submit";
 
 import TurboModalController from "./turbo_modal_controller";
+
 application.register("turbo-modal", TurboModalController);
 application.register("notification", Notification);
+application.register("auto-submit", AutoSubmit);
