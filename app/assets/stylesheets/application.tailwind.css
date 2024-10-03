@@ -14,4 +14,8 @@
   .alert-error {
     @apply text-red-600 bg-red-100 border-red-200;
   }
+
+  .drawer-side {
+    @apply h-full border-r border-gray-200;
+  }
 }

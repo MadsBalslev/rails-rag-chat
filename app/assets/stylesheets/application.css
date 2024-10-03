@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -24,7 +24,7 @@ class CollectionsController < ApplicationController
           render turbo_stream: turbo_stream.replace(
             "collections",
             partial: "collections/collection",
-            collection: Collection.all
+            collection: policy_scope(Collection)
           )
         end
         format.html do

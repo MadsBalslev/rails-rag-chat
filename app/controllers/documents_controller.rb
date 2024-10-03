@@ -22,7 +22,7 @@ class DocumentsController < ApplicationController
           render turbo_stream: turbo_stream.replace(
             "documents",
             partial: "documents/document",
-            collection: Document.all
+            collection: policy_scope(Document).all
           )
         end
         format.html do

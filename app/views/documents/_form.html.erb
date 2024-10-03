@@ -11,7 +11,7 @@
       <span class="label-text">Collection to add document</span>
     </div>
     <%= form.select :collection_id,
-                Collection.all.map { |c| [c.title, c.id] },
+                policy_scope(Collection).map { |c| [c.title, c.id] },
                 { include_blank: "Select Collection" },
                 class: "select select-bordered w-full",
                 selected: @collection.present? ? @collection.id : nil,

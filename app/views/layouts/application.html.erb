@@ -27,10 +27,18 @@
 
   <body>
     <%= render "layouts/navbar" %>
+    <%= turbo_frame_tag "modal" %>
 
-    <main class="container mx-auto mt-16 px-5 flex flex-col">
-      <%= turbo_frame_tag "modal" %>
-      <%= yield %>
+    <main
+      class="
+        mx-auto flex flex-col grow h-full <%= content_for?(:side_menu) ? "w-full" : "container mt-16 px-5"%>
+      "
+    >
+      <% if content_for?(:side_menu) %>
+        <%= render "layouts/side_menu" %>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </main>
 
     <%= render "layouts/flash_message" %>
