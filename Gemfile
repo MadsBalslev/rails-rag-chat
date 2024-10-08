@@ -71,7 +71,7 @@ gem "lucide-rails", "~> 0.5.1"
 
 gem "view_component", "~> 3.15"
 
-gem "neighbor", "~> 0.4.3"
+gem "neighbor", "~> 0.5.0"
 
 gem "sidekiq", "~> 7.3"
 
