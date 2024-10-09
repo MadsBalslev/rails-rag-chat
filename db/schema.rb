@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_03_172358) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_03_181642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "vector"
@@ -85,6 +85,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_03_172358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "collection_id", null: false
+    t.boolean "embedded", default: false
     t.index ["collection_id"], name: "index_documents_on_collection_id"
   end
 
@@ -128,13 +129,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_03_172358) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chat_collections", "chats"
-  add_foreign_key "chat_collections", "collections"
+  add_foreign_key "chat_collections", "chats", on_delete: :cascade
+  add_foreign_key "chat_collections", "collections", on_delete: :cascade
   add_foreign_key "chats", "users"
   add_foreign_key "collections", "users"
   add_foreign_key "documents", "collections"
-  add_foreign_key "message_chunks", "chunks"
-  add_foreign_key "message_chunks", "messages"
+  add_foreign_key "message_chunks", "chunks", on_delete: :cascade
+  add_foreign_key "message_chunks", "messages", on_delete: :cascade
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "sessions", "users"
