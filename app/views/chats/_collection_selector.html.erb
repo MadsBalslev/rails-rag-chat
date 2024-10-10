@@ -1,0 +1,8 @@
+<%= collection_check_boxes(:chat, :collection_ids, collections, :id, :title) do |b| %>
+  <div class="badge-toggle">
+    <%= b.check_box %>
+    <label class="badge badge-outline" data-collection-id="<%= b.value %>">
+      <%= b.text %>
+    </label>
+  </div>
+<% end %>

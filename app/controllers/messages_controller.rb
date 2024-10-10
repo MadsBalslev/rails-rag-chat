@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.build(message_params)
     @message.user = current_user
-    @collection_ids = params[:message][:collection_ids]
+    @collection_ids = params[:chat][:collection_ids]
 
 
     if @collection_ids.empty?

@@ -2,18 +2,21 @@ class ChatsController < ApplicationController
   before_action :find_previous_chats
 
   def index
+    @collections = policy_scope(Collection)
+    @chat = Chat.new
   end
 
   def show
-    @current_chat = policy_scope(Chat).find(params[:id]) rescue nil
+    @chat = policy_scope(Chat).find(params[:id]) rescue nil
+    @collections = @chat.collections
 
-    if !@current_chat && params[:id]
+    if !@chat && params[:id]
       return redirect_to chats_path
     end
 
-    authorize @current_chat
+    authorize @chat
 
-    @messages = @current_chat.messages
+    @messages = @chat.messages
 
     render :index
   end

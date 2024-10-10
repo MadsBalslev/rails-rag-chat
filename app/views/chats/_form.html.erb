@@ -1,14 +1,6 @@
 <%= form_with model: Message.build, class: "w-full flex flex-col gap-2" do |f| %>
   <%= f.hidden_field :chat_id, value: (chat.present? ? chat.id : nil) %>
-  <label class="form-control w-full">
-    <div class="label">
-      <span class="label-text">Select the collections to chat with</span>
-    </div>
-    <%= f.select :collection_ids,
-             policy_scope(Collection).collect { |c| [c.title, c.id] },
-             { multiple: true },
-             class: "select select-bordered w-full" %>
-  </label>
+  <%= render "chats/collection_selector", { f: f, collections: @collections, chat: } %>
   <div class="flex flex-row gap-2">
     <%= f.text_area :content,
                 class: "textarea textarea-bordered w-full",

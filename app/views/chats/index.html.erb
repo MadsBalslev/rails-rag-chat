@@ -11,7 +11,6 @@
     <% end %>
   </div>
   <div class="flex flex-row p-3">
-    <%= render "form",
-    { message: @message, chat: (@current_chat.present? ? @current_chat : nil) } %>
+    <%= render "form", { message: @message, chat: (@chat.persisted? ? @chat : nil) } %>
   </div>
 </div>

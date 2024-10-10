@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   def index
-    @documents = policy_scope(Document)
+    @documents = policy_scope(Document).order(created_at: :asc)
     authorize @documents
   end
 
