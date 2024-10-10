@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :chat
+  belongs_to :chat, touch: true
   belongs_to :user, optional: true
   has_many :message_chunks, dependent: :destroy
   has_many :chunks, through: :message_chunks
@@ -33,10 +33,10 @@ class Message < ApplicationRecord
 
   def generate_response
     return unless user.present?
+    question = self.content
+    relevant_chunks = RelevantChunkFinder.new(message: self, chat_id: chat_id).relevant_chunks
+    answer = RagAnswerService.new(chunks: relevant_chunks, question: question).call
 
-    embedded_msg = EmbedService.new(content: content).embed
-
-    relevant_chunks = Chunk.nearest_neighbors(:embedding, embedded_msg, distance: "cosine").limit(5)
-    chat.messages.create(user: nil, content: "Here are some relevant chunks:", chunks: relevant_chunks)
+    chat.messages.create(user: nil, content: answer, chunks: relevant_chunks)
   end
 end

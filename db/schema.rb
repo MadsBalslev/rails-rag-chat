@@ -136,7 +136,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_03_181642) do
   add_foreign_key "documents", "collections"
   add_foreign_key "message_chunks", "chunks", on_delete: :cascade
   add_foreign_key "message_chunks", "messages", on_delete: :cascade
-  add_foreign_key "messages", "chats"
-  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "chats", on_delete: :cascade
+  add_foreign_key "messages", "users", on_delete: :nullify
   add_foreign_key "sessions", "users"
 end

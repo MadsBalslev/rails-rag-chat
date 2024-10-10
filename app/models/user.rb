@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :collections
   has_many :documents, through: :collections
+  has_many :chunks, through: :documents
 
   has_one_attached :avatar
 
