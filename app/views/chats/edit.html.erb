@@ -1,0 +1,10 @@
+<% if turbo_frame_request? %>
+  <%= render TurboModalComponent.new(title: "Edit Chat") do %>
+    <%= render "chats/form", chat: @chat %>
+  <% end %>
+<% else %>
+  <div class="header">
+    <h2 class="text-2xl font-bold">Edit Chat</h2>
+  </div>
+  <%= render "form", chat: @chat %>
+<% end %>

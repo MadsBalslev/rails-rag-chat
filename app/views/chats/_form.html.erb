@@ -1,13 +1,6 @@
-<%= form_with model: Message.build, class: "w-full flex flex-col gap-2" do |f| %>
-  <%= f.hidden_field :chat_id, value: (chat.present? ? chat.id : nil) %>
-  <%= render "chats/collection_selector",
-  { f: f, collections: @collections, chat: @chat } %>
-  <div class="flex flex-row gap-2">
-    <%= f.text_area :content,
-                class: "textarea textarea-bordered w-full",
-                placeholder: "Type a message..." %>
-    <button type="submit" class="btn btn-primary h-full">
-      <%= lucide_icon("send") %>
-    </button>
-  </div>
+<%= form_with model: chat, class: "w-full flex flex-col gap-2" do |f| %>
+  <%= f.text_field :title, class: "input input-bordered w-full" %>
+  <button type="submit" class="btn btn-sm btn-primary h-full">
+    Update
+  </button>
 <% end %>

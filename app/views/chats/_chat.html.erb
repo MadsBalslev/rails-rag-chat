@@ -1,3 +1,22 @@
-<%= link_to chat_path(chat), class: "btn btn-ghost btn-block justify-start" do %>
-  Title
-<% end %>
+<div class="chat-entry flex flex-row justify-between items-center">
+  <%= link_to chat_path(chat), class: "btn btn-ghost grow justify-start" do %>
+    <%= chat.title.present? ? chat.title : "Chat ##{chat.id}" %>
+  <% end %>
+  <div class="dropdown dropdown-end">
+    <div tabindex="0" role="button" class="btn btn-ghost"><%= lucide_icon("ellipsis-vertical") %></div>
+    <ul
+      tabindex="0"
+      class="
+        dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow
+      "
+    >
+      <%= button_to chat, class: "btn btn-sm btn-ghost btn-block flex flex-row justify-between", method: :delete do %>
+        Delete
+        <%= lucide_icon("trash-2", size: 16) %>
+      <% end %>
+      <%= link_to edit_chat_path(chat), class: "btn btn-sm btn-ghost btn-block flex flex-row justify-between", data: {turbo_frame: "modal"} do %>
+        Rename
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -23,4 +23,16 @@ class ChatPolicy < ApplicationPolicy
   def show?
     record.user == user
   end
+
+  def edit?
+    show?
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    show?
+  end
 end

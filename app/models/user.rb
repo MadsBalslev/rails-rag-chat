@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :collections
   has_many :documents, through: :collections
   has_many :chunks, through: :documents
+  has_many :chats, dependent: :destroy
 
   has_one_attached :avatar
 

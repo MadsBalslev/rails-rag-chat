@@ -1,10 +1,14 @@
 <ul class="menu text-base-content bg-base-100 min-h-full w-80">
   <div class="header">
     <h2 class="text-xl font-bold">Previous Chats</h2>
-    <%= lucide_icon("square-pen") %>
+    <%= link_to chats_path, class: "btn" do %>
+      <%= lucide_icon("square-pen") %>
+    <% end %>
   </div>
   <div class="divider my-0"></div>
-  <% chats.each do |chat| %>
-    <%= render "chat", chat: chat %>
-  <% end %>
+  <div id="chats">
+    <% chats.each do |chat| %>
+      <%= render "chat", chat: chat %>
+    <% end %>
+  </div>
 </ul>

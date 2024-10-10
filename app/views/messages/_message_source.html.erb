@@ -1,9 +1,9 @@
 <div class="message-source flex flex-row w-full justify-between my-2">
-  <span class="truncate grow text-left w-8/12 italic"><%= document %></span>
+  <span class="truncate grow text-left w-8/12 italic"><%= link_to document %></span>
   <div class="divider divider-horizontal mx-[2px]"></div>
   <div class="sources w-4/12">
     pages:
-    <% meta[:positions].each do |source| %>
+    <% meta[:positions].sort.uniq.each do |source| %>
       <%= link_to document_path(meta[:document_id], page: source) do %>
         <span class="badge badge-primary badge-outline"><%= source %></span>
       <% end %>
