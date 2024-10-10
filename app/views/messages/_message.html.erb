@@ -1,32 +1,5 @@
-<div
-  class="chat chat-<%= message.user.present? ? "end" : "start" %> max-w-full"
->
-  <div class="chat-image avatar placeholder">
-    <div class="w-12 rounded-full bg-neutral text-neutral-content">
-      <% if message.user.present? %>
-        <%= render "users/avatar", { user: message.user, initials: message.user.initials } %>
-      <% else %>
-        <span><%= lucide_icon("bot") %></span>
-      <% end %>
-    </div>
-  </div>
-  <div class="chat-header">
-    <%= message.user.present? ? message.user.first_name : "System" %>
-  </div>
-  <div
-    class="chat-bubble <%= message.user.present? ? "" : "chat-bubble-primary" %>"
-  ><%= message.content %></div>
-
-  <% if message.sources %>
-    <div class="chat-footer flex flex-col gap-2 max-w-full">
-      Sources:
-      <% message.sources.each do |document, meta| %>
-        <%= link_to document_path(meta[:document_id]), class: "btn" do %>
-          <span class="truncate"><%= document %></span>
-          <div class="badge">p.
-            <%= meta[:positions].sort.join(", ") %></div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<% if message.user.present? %>
+  <%= render "messages/user_message", message: message %>
+<% else %>
+  <%= render "messages/system_message", message: message %>
+<% end %>

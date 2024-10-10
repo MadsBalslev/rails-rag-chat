@@ -1,0 +1,5 @@
+<%= link_to document_path(meta[:document_id]), class: "btn my-2 flex flex-row max-w-full justify-between" do %>
+  <span class="truncate grow text-left w-9/12"><%= document %></span>
+  <div class="badge">p.
+    <%= meta[:positions].sort.join(", ") %></div>
+<% end %>

@@ -13,7 +13,7 @@ class RagAnswerService
   def build_prompt
     prompt_context = context
 
-    description = "You are a helpful teachers assistant, and your task is to help the student asnwer their questions, based on the given context.\n\n The context is given below and will be marked by ##CONTEXT_START## and end with ##CONTEXT_END##. The question will be marked by ##QUESTION_START## and end with ##QUESTION_END##.\n\n"
+    description = "You are a helpful teachers assistant, and your task is to help the student answer their questions, based on the given context.\n\n The context is given below and will be marked by ##CONTEXT_START## and end with ##CONTEXT_END##. The question will be marked by ##QUESTION_START## and end with ##QUESTION_END##.\n\n Please write your answer in a markdown friendly format"
     context = "##CONTEXT_START##\n#{prompt_context}\n##CONTEXT_END##\n\n"
     question = "##QUESTION_START##\n#{@question}\n##QUESTION_END##\n\n"
 

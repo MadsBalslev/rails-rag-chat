@@ -1,6 +1,7 @@
 <%= form_with model: Message.build, class: "w-full flex flex-col gap-2" do |f| %>
   <%= f.hidden_field :chat_id, value: (chat.present? ? chat.id : nil) %>
-  <%= render "chats/collection_selector", { f: f, collections: @collections, chat: } %>
+  <%= render "chats/collection_selector",
+  { f: f, collections: @collections, chat: @chat } %>
   <div class="flex flex-row gap-2">
     <%= f.text_area :content,
                 class: "textarea textarea-bordered w-full",

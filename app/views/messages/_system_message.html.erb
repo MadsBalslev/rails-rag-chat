@@ -1,0 +1,18 @@
+<% markdown =
+  Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
+
+<div class="divider"></div>
+<div class="system-message flex flex-col gap-4">
+  <div class="message-content">
+    <%= markdown.render(message.content).html_safe %>
+  </div>
+  <% if message.sources %>
+    <div class="message-sources flex flex-col">
+      <span class="text-sm font-bold">Sources:</span>
+      <% message.sources.each do |document, meta| %>
+        <%= render "messages/message_source", document: document, meta: meta %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="divider"></div>

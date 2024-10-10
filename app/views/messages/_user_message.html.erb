@@ -1,0 +1,11 @@
+<div class="chat chat-end max-w-full">
+  <div class="chat-image avatar placeholder">
+    <div class="w-12 rounded-full bg-neutral text-neutral-content">
+      <%= render "users/avatar", { user: message.user, initials: message.user.initials } %>
+    </div>
+  </div>
+  <div class="chat-header">
+    <%= message.user.first_name %>
+  </div>
+  <div class="chat-bubble"><%= message.content %></div>
+</div>

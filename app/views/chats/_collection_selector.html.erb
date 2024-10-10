@@ -1,6 +1,6 @@
 <%= collection_check_boxes(:chat, :collection_ids, collections, :id, :title) do |b| %>
   <div class="badge-toggle">
-    <%= b.check_box %>
+    <%= b.check_box disabled: chat.persisted?, class: "checkbox checkbox-xs" %>
     <label class="badge badge-outline" data-collection-id="<%= b.value %>">
       <%= b.text %>
     </label>
