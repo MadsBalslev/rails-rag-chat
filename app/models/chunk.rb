@@ -1,5 +1,5 @@
 class Chunk < ApplicationRecord
-  belongs_to :chunkable, polymorphic: true
+  belongs_to :chunkable, polymorphic: true, touch: true
 
   has_many :message_chunks, dependent: :destroy
 
