@@ -8,7 +8,6 @@ class ChatsController < ApplicationController
 
   def show
     @chat = policy_scope(Chat).find(params[:id]) rescue nil
-    @collections = @chat.collections
 
     if !@chat && params[:id]
       return redirect_to chats_path
@@ -17,6 +16,7 @@ class ChatsController < ApplicationController
     authorize @chat
 
     @messages = @chat.messages
+    @collections = @chat.collections
 
     render :index
   end

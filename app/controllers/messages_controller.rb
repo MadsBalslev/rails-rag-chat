@@ -12,19 +12,18 @@ class MessagesController < ApplicationController
       return redirect_to chats_path
     end
 
-    if @chat.present?
-      @message.chat = @chat
-    else
-      @message.chat = Chat.create!(messages: [ @message ], user: current_user)
+    if !@chat.present?
+      @chat = Chat.create!(messages: [], user: current_user)
+
       @collection_ids.each do |collection_id|
-        collection = polocy_scope(Collection).find(collection_id) rescue nil
+        collection = policy_scope(Collection).find(collection_id) rescue nil
         if collection
-          @message.chat.collections << collection
+          ChatCollection.create!(chat: @chat, collection: collection)
         end
       end
-
-      @message.chat.save!
     end
+
+    @message.chat = @chat
 
     if @message.save
       redirect_to chat_path(@message.chat)
