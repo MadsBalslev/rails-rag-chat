@@ -8,7 +8,14 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     authorize @document
 
-    redirect_to rails_blob_path(@document.file), disposition: "preview"
+    @document_url = rails_blob_path(@document.file)
+
+    if params[:page]
+      page = params[:page].to_i
+      redirect_to "#{@document_url}#page=#{page}", disposition: "preview"
+    else
+      redirect_to @document_url, disposition: "preview"
+    end
   end
 
   def new

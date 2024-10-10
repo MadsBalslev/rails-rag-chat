@@ -1,8 +1,11 @@
-<%= collection_check_boxes(:chat, :collection_ids, collections, :id, :title) do |b| %>
-  <div class="badge-toggle">
-    <%= b.check_box disabled: chat.persisted?, class: "checkbox checkbox-xs" %>
-    <label class="badge badge-outline" data-collection-id="<%= b.value %>">
-      <%= b.text %>
-    </label>
+<div class="flex flex-row gap-2 items-center w-full">
+  <span class="font-bold">Collections:</span>
+  <div class="gap-2 max-w-full overflow-x-auto">
+    <%= collection_check_boxes(:chat, :collection_ids, collections, :id, :title) do |b| %>
+      <%= b.label class: "collection-checkbox" do %>
+        <%= b.check_box disabled: chat.persisted?, class: "hidden" %>
+        <div class="collection-input"><%= b.text %></div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+</div>

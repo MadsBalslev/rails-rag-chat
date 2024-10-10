@@ -2,15 +2,15 @@
   <%= render "chats/sidemenu", chats: @chats %>
 <% end %>
 
-<div class="chat-window flex flex-col h-full max-h-full w-full max-w-4xl">
-  <div class="flex-1 w-full mt-8 overflow-y-auto">
+<div class="chat-window flex flex-col items-center h-full max-h-full w-full">
+  <div class="flex-1 w-full max-w-4xl mt-8 overflow-y-auto">
     <% if @messages %>
       <% @messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
     <% end %>
   </div>
-  <div class="flex flex-row p-3">
+  <div class="flex flex-row p-3 w-full max-w-4xl">
     <%= render "form", { message: @message, chat: (@chat.persisted? ? @chat : nil) } %>
   </div>
 </div>

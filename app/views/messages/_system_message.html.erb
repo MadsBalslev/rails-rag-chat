@@ -9,7 +9,7 @@
   <% if message.sources %>
     <div class="message-sources flex flex-col">
       <span class="text-sm font-bold">Sources:</span>
-      <% message.sources.each do |document, meta| %>
+      <% message.sources.uniq.each do |document, meta| %>
         <%= render "messages/message_source", document: document, meta: meta %>
       <% end %>
     </div>

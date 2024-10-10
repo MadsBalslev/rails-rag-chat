@@ -18,4 +18,20 @@
   .drawer-side {
     @apply h-full border-r border-gray-200;
   }
+
+  .badge-outline:hover {
+    @apply bg-primary text-primary-content;
+  }
+
+  .collection-checkbox input ~ .collection-input {
+    @apply badge-outline;
+  }
+
+  .collection-checkbox input:checked ~ .collection-input {
+    @apply badge-primary;
+  }
+
+  .collection-input {
+    @apply badge badge-primary;
+  }
 }
