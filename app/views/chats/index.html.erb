@@ -2,8 +2,8 @@
   <%= render "chats/sidemenu", chats: @chats %>
 <% end %>
 
-<div class="chat-window flex flex-col max-h-full w-full max-w-4xl">
-  <div class="grow w-full mt-8 max-h-full overflow-y-scroll">
+<div class="chat-window flex flex-col h-full max-h-full w-full max-w-4xl">
+  <div class="flex-1 w-full mt-8 overflow-y-auto">
     <% if @messages %>
       <% @messages.each do |message| %>
         <%= render "messages/message", message: message %>

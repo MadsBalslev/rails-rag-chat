@@ -30,8 +30,9 @@
     <%= turbo_frame_tag "modal" %>
 
     <main
+      style="height: calc(100% - 64px); overflow-y: auto;"
       class="
-        mx-auto flex flex-col grow h-full <%= content_for?(:side_menu) ? "w-full" : "container mt-16 px-5"%>
+        mx-auto flex flex-1 flex-col <%= content_for?(:side_menu) ? "w-full" : "container mt-16 px-5"%>
       "
     >
       <% if content_for?(:side_menu) %>
