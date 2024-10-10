@@ -1,7 +1,8 @@
 class RelevantChunkFinder
-  def initialize(message:, chat_id:)
+  def initialize(message:, chat_id:, k: 5)
     @message = message
     @chat = Chat.find(chat_id)
+    @k = k
   end
 
   def embed_message
@@ -14,7 +15,7 @@ class RelevantChunkFinder
     # chunks = @chat.chunks
 
     # Only look a chunks that are owned by the user (chat.user.chunks)
-    relevant_chunks = Chunk.nearest_neighbors(:embedding, embedded_msg, distance: "cosine").limit(5)
+    relevant_chunks = Chunk.nearest_neighbors(:embedding, embedded_msg, distance: "cosine").limit(@k)
 
     relevant_chunks
   end

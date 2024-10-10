@@ -34,7 +34,7 @@ class Message < ApplicationRecord
   def generate_response
     return unless user.present?
     question = self.content
-    relevant_chunks = RelevantChunkFinder.new(message: self, chat_id: chat_id).relevant_chunks
+    relevant_chunks = RelevantChunkFinder.new(message: self, chat_id: chat_id, k: 10).relevant_chunks
     answer = RagAnswerService.new(chunks: relevant_chunks, question: question).call
 
     chat.messages.create(user: nil, content: answer, chunks: relevant_chunks)
