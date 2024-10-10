@@ -77,7 +77,7 @@ gem "sidekiq", "~> 7.3"
 
 gem "pdf-reader", "~> 2.12"
 
-gem "ruby-openai", "~> 7.1"
+gem "ruby-openai", "~> 7.2"
 
 gem "pundit", "~> 2.4"
 
