@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+  normalizes :first_name, with: ->(n) { n.strip.capitalize }
+  normalizes :last_name, with: ->(n) { n.strip.capitalize }
 
   validates :email_address, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, presence: true

@@ -4,6 +4,8 @@ class Message < ApplicationRecord
   has_many :message_chunks, dependent: :destroy
   has_many :chunks, through: :message_chunks
 
+  validates :content, presence: true
+
   after_create :generate_response
 
   def sources
